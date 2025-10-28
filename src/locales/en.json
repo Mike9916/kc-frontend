@@ -1,0 +1,53 @@
+{
+  "app_title": "KC App",
+  "home": "Home",
+  "leaders": "Leaders",
+  "leaders_hint": "Load summaries • Fill missing • Forward",
+  "settings": "Settings",
+  "settings_hint": "Profile • Language • Support • Logout",
+  "reports": "Reports",
+  "reports_hint": "Submit Service • Education • Evangelism • Offering",
+  "announcements": "Announcements",
+  "announcements_hint": "Latest from Culture Dept",
+  "back": "Back",
+  "profile": "Profile",
+  "language": "Language",
+  "support": "Support / Account Help",
+  "logout": "Log out",
+
+  "date": "Date",
+  "type": "Type",
+  "reload": "Reload",
+  "forward": "Forward",
+  "fill_missing": "Fill Missing",
+  "save": "Save",
+  "cancel": "Cancel",
+  "submitted": "Submitted!",
+  "error": "Error",
+
+  "service": "Service",
+  "education": "Education",
+  "evangelism": "Evangelism",
+  "offering": "Offering",
+
+  "physical": "Physical",
+  "online": "Online",
+  "other": "Other",
+  "not_attended": "Not Attended",
+
+  "estf_mon": "ESTF Monday",
+  "all_thu": "All Saints Thursday",
+  "all_sun": "All Saints Sunday",
+
+  "participated": "Participated",
+  "findings": "Findings",
+  "nfp": "NFP",
+  "rp": "RP",
+  "bb": "BB",
+
+  "cash": "Cash",
+  "mpesa": "M-Pesa",
+  "bank": "Bank",
+  "amount": "Amount",
+  "note_optional": "Note (optional)"
+}

@@ -1,0 +1,176 @@
+{
+  "app": {
+    "title": "KC App",
+    "welcome": "Welcome",
+    "home": "Home",
+    "leaders": "Leaders",
+    "settings": "Settings",
+    "reports": "Reports",
+    "media": "Evangelism Media",
+    "announcements": "Announcements",
+    "issues": "Report Issue",
+    "admin": "Admin Console",
+    "auth": "Account Access",
+    "login": "Log In",
+    "signup": "Create Account"
+  },
+
+  "auth": {
+    "scjId": "SCJ ID",
+    "name": "Full Name",
+    "phone": "Phone",
+    "password": "PIN / Password",
+    "jyk": "JYK",
+    "dept": "Department",
+    "cell": "Cell",
+    "login_help": "Need help logging in?",
+    "signup_help": "Having trouble creating an account?",
+    "send_to_admin": "Send to Admin",
+    "create_account": "Create Account",
+    "login": "Log In",
+    "clear": "Clear",
+    "success_login": "Welcome back!",
+    "success_signup": "Account created. Welcome!",
+    "missing_required": "Missing required fields."
+  },
+
+  "home": {
+    "tile_reports_hint": "Service • Education • Evangelism • Offering",
+    "tile_media_hint": "Upload and view JYK media",
+    "tile_announcements_hint": "Culture posts",
+    "tile_issues_hint": "Anonymous to Comms",
+    "tile_leaders_hint": "Leader tools",
+    "tile_settings_hint": "Profile • Language • Backups • Logout",
+    "tile_admin_hint": "Whitelist • Roles • Support • Flags • Audit"
+  },
+
+  "reports": {
+    "title": "Reports",
+    "service": "Service",
+    "education": "Education",
+    "evangelism": "Evangelism",
+    "offering": "Offering",
+    "scjDate": "SCJ Date",
+    "method": "Method",
+    "notAttended": "Not Attended",
+    "realization": "Realization (optional)",
+    "session": "Session",
+    "participated": "Participated",
+    "findings": "Findings",
+    "nfp": "NFP",
+    "rp": "RP",
+    "bb": "BB",
+    "channel": "Channel",
+    "amount": "Amount",
+    "submit_service": "Submit Service",
+    "submit_education": "Submit Education",
+    "submit_evangelism": "Submit Evangelism",
+    "submit_offering": "Submit Offering",
+    "ok_submit": "Submitted."
+  },
+
+  "media": {
+    "add_media": "Add Media (URL)",
+    "type": "Type",
+    "url": "URL",
+    "size_bytes": "Size (bytes)",
+    "save": "Save",
+    "gallery": "Gallery",
+    "delete": "Delete",
+    "no_items": "No media yet."
+  },
+
+  "ann": {
+    "post": "Post Announcement (Culture/Admin)",
+    "title": "Title",
+    "body": "Body",
+    "attach": "Attachment URL",
+    "feed": "Feed",
+    "none": "No announcements yet.",
+    "posted": "Posted"
+  },
+
+  "issues": {
+    "title": "Report Issue",
+    "anon_to_comms": "Anonymous to Communication Department",
+    "placeholder": "Type your suggestion/complaint...",
+    "send": "Send",
+    "sent": "Sent anonymously to Comms."
+  },
+
+  "leaders": {
+    "dashboard": "Leaders Dashboard",
+    "date": "Date",
+    "type": "Type",
+    "load": "Load Summary",
+    "total": "Total",
+    "submitted": "Submitted",
+    "missing": "Missing",
+    "scjId": "SCJ ID",
+    "name": "Name",
+    "status": "Status",
+    "actions": "Actions",
+    "fill_missing": "Fill Missing",
+    "call": "Call",
+    "sms": "SMS",
+    "whatsapp": "WhatsApp",
+    "telegram": "Telegram",
+    "restricted": "Leaders area — access restricted."
+  },
+
+  "settings": {
+    "profile": "Profile",
+    "language": "Language",
+    "backups": "Backups",
+    "session": "Session",
+    "logout": "Log Out",
+    "saved": "Saved.",
+    "name": "Name",
+    "role": "Role"
+  },
+
+  "admin": {
+    "tabs": {
+      "whitelist": "WHITELIST",
+      "roles": "ROLES",
+      "support": "SUPPORT",
+      "flags": "FLAGS",
+      "audit": "AUDIT"
+    },
+    "whitelist_upsert": "Whitelist Upsert",
+    "set_role": "Set Account Role",
+    "support_inbox": "Support Inbox",
+    "feature_flags": "Feature Flags",
+    "audit_log": "Audit Log",
+    "save": "Save",
+    "update": "Update",
+    "override": "Override",
+    "no_tickets": "No tickets.",
+    "no_entries": "No entries.",
+    "admin_only": "Admin only."
+  },
+
+  "enums": {
+    "type": {
+      "service": "Service",
+      "education": "Education",
+      "evangelism": "Evangelism",
+      "offering": "Offering"
+    },
+    "method": {
+      "physical": "Physical",
+      "online": "Online",
+      "other": "Other"
+    },
+    "session": {
+      "ESTF_MON": "ESTF Monday",
+      "ALL_THU": "All Saints Thursday",
+      "ALL_SUN": "All Saints Sunday"
+    },
+    "channel": {
+      "cash": "Cash",
+      "mpesa": "M-Pesa",
+      "bank": "Bank"
+    }
+  }
+}

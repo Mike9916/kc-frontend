@@ -1,0 +1,53 @@
+{
+  "app_title": "KC 앱",
+  "home": "홈",
+  "leaders": "리더",
+  "leaders_hint": "요약 로드 • 미제출 작성 • 전달",
+  "settings": "설정",
+  "settings_hint": "프로필 • 언어 • 지원 • 로그아웃",
+  "reports": "보고",
+  "reports_hint": "예배 • 교육 • 전도 • 헌금 제출",
+  "announcements": "공지",
+  "announcements_hint": "문화부 공지",
+  "back": "뒤로",
+  "profile": "프로필",
+  "language": "언어",
+  "support": "지원 / 계정 도움말",
+  "logout": "로그아웃",
+
+  "date": "날짜",
+  "type": "유형",
+  "reload": "새로고침",
+  "forward": "전달",
+  "fill_missing": "미제출 작성",
+  "save": "저장",
+  "cancel": "취소",
+  "submitted": "제출 완료!",
+  "error": "오류",
+
+  "service": "예배",
+  "education": "교육",
+  "evangelism": "전도",
+  "offering": "헌금",
+
+  "physical": "현장",
+  "online": "온라인",
+  "other": "기타",
+  "not_attended": "불참",
+
+  "estf_mon": "ESTF(월)",
+  "all_thu": "올성도(목)",
+  "all_sun": "올성도(일)",
+
+  "participated": "참여함",
+  "findings": "개척",
+  "nfp": "NFP",
+  "rp": "RP",
+  "bb": "BB",
+
+  "cash": "현금",
+  "mpesa": "엠페사",
+  "bank": "은행",
+  "amount": "금액",
+  "note_optional": "메모(선택)"
+}

@@ -1,0 +1,176 @@
+{
+  "app": {
+    "title": "KC 앱",
+    "welcome": "환영합니다",
+    "home": "홈",
+    "leaders": "리더",
+    "settings": "설정",
+    "reports": "보고",
+    "media": "전도 미디어",
+    "announcements": "공지",
+    "issues": "건의/불만",
+    "admin": "관리자 콘솔",
+    "auth": "계정 접근",
+    "login": "로그인",
+    "signup": "계정 만들기"
+  },
+
+  "auth": {
+    "scjId": "SCJ 아이디",
+    "name": "성명",
+    "phone": "전화번호",
+    "password": "비밀번호",
+    "jyk": "JYK",
+    "dept": "부서",
+    "cell": "셀",
+    "login_help": "로그인에 문제가 있나요?",
+    "signup_help": "계정 생성에 문제가 있나요?",
+    "send_to_admin": "관리자에게 보내기",
+    "create_account": "계정 만들기",
+    "login": "로그인",
+    "clear": "지우기",
+    "success_login": "다시 오신 것을 환영합니다!",
+    "success_signup": "계정이 생성되었습니다.",
+    "missing_required": "필수 항목이 누락되었습니다."
+  },
+
+  "home": {
+    "tile_reports_hint": "예배 • 교육 • 전도 • 헌금",
+    "tile_media_hint": "JYK 미디어 업로드/보기",
+    "tile_announcements_hint": "문화부 공지",
+    "tile_issues_hint": "통신부로 익명 전송",
+    "tile_leaders_hint": "리더 도구",
+    "tile_settings_hint": "프로필 • 언어 • 백업 • 로그아웃",
+    "tile_admin_hint": "화이트리스트 • 역할 • 지원 • 플래그 • 감사"
+  },
+
+  "reports": {
+    "title": "보고",
+    "service": "예배",
+    "education": "교육",
+    "evangelism": "전도",
+    "offering": "헌금",
+    "scjDate": "SCJ 날짜",
+    "method": "방법",
+    "notAttended": "불참",
+    "realization": "깨달음 (선택)",
+    "session": "세션",
+    "participated": "참여",
+    "findings": "발견",
+    "nfp": "NFP",
+    "rp": "RP",
+    "bb": "BB",
+    "channel": "채널",
+    "amount": "금액",
+    "submit_service": "예배 보고 제출",
+    "submit_education": "교육 보고 제출",
+    "submit_evangelism": "전도 보고 제출",
+    "submit_offering": "헌금 보고 제출",
+    "ok_submit": "제출되었습니다."
+  },
+
+  "media": {
+    "add_media": "미디어 추가 (URL)",
+    "type": "유형",
+    "url": "URL",
+    "size_bytes": "크기(바이트)",
+    "save": "저장",
+    "gallery": "갤러리",
+    "delete": "삭제",
+    "no_items": "미디어가 없습니다."
+  },
+
+  "ann": {
+    "post": "공지 등록 (문화/관리자)",
+    "title": "제목",
+    "body": "내용",
+    "attach": "첨부 URL",
+    "feed": "피드",
+    "none": "공지 없음.",
+    "posted": "등록되었습니다."
+  },
+
+  "issues": {
+    "title": "건의/불만",
+    "anon_to_comms": "통신부로 익명 전송",
+    "placeholder": "건의/불만을 입력하세요...",
+    "send": "보내기",
+    "sent": "통신부에 익명으로 전송되었습니다."
+  },
+
+  "leaders": {
+    "dashboard": "리더 대시보드",
+    "date": "날짜",
+    "type": "유형",
+    "load": "요약 불러오기",
+    "total": "전체",
+    "submitted": "제출",
+    "missing": "미제출",
+    "scjId": "SCJ 아이디",
+    "name": "이름",
+    "status": "상태",
+    "actions": "작업",
+    "fill_missing": "미제출 입력",
+    "call": "전화",
+    "sms": "문자",
+    "whatsapp": "왓츠앱",
+    "telegram": "텔레그램",
+    "restricted": "리더 전용 영역입니다."
+  },
+
+  "settings": {
+    "profile": "프로필",
+    "language": "언어",
+    "backups": "백업",
+    "session": "세션",
+    "logout": "로그아웃",
+    "saved": "저장되었습니다.",
+    "name": "이름",
+    "role": "역할"
+  },
+
+  "admin": {
+    "tabs": {
+      "whitelist": "화이트리스트",
+      "roles": "역할",
+      "support": "지원",
+      "flags": "플래그",
+      "audit": "감사"
+    },
+    "whitelist_upsert": "화이트리스트 등록/수정",
+    "set_role": "계정 역할 설정",
+    "support_inbox": "지원함",
+    "feature_flags": "기능 플래그",
+    "audit_log": "감사 로그",
+    "save": "저장",
+    "update": "업데이트",
+    "override": "오버라이드",
+    "no_tickets": "티켓이 없습니다.",
+    "no_entries": "기록이 없습니다.",
+    "admin_only": "관리자만 가능합니다."
+  },
+
+  "enums": {
+    "type": {
+      "service": "예배",
+      "education": "교육",
+      "evangelism": "전도",
+      "offering": "헌금"
+    },
+    "method": {
+      "physical": "대면",
+      "online": "온라인",
+      "other": "기타"
+    },
+    "session": {
+      "ESTF_MON": "ESTF 월요일",
+      "ALL_THU": "올 성도 목요일",
+      "ALL_SUN": "올 성도 주일"
+    },
+    "channel": {
+      "cash": "현금",
+      "mpesa": "M-Pesa",
+      "bank": "은행"
+    }
+  }
+}
