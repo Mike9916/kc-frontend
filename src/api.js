@@ -1,13 +1,12 @@
-// kc-frontend/src/api.js
-// Choose API base from env; fall back to localhost for dev
+// -------------------- API Base URL --------------------
 export const API_BASE =
-  (typeof import.meta !== 'undefined' &&
+  (typeof import.meta !== "undefined" &&
     import.meta.env &&
     // support either VITE_API_BASE or VITE_API_BASE_URL
     (import.meta.env.VITE_API_BASE || import.meta.env.VITE_API_BASE_URL)) ||
-  'https://kc-backend-1.onrender.com/';
+  "https://kc-backend-dpn0.onrender.com";   // 👈 Your Render backend base URL
 
-  console.log('API_BASE in this build =', API_BASE);
+console.log("API_BASE in this build =", API_BASE);
 
 // -------------------- Token / Profile storage --------------------
 const LS_TOKEN = "kc_token";
