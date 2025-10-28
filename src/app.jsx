@@ -6,15 +6,15 @@ import { useTranslation } from "react-i18next";
 import { getProfile, isLoggedIn, logout } from "./api";
 
 // Pages (create these files under src/pages/)
-import Welcome from "./pages/Welcome.jsx";
+import Welcome from "./pages/welcome.jsx";
 import Auth from "./pages/Auth.jsx";
-import Home from "./pages/Home.jsx";
-import Reports from "./pages/Reports.jsx";
-import Media from "./pages/Media.jsx";
+import Home from "./pages/home.jsx";
+import Reports from "./pages/reports.jsx";
+import Media from "./pages/media.jsx";
 import Leaders from "./pages/Leaders.jsx";
-import Settings from "./pages/Settings.jsx";
-import AdminConsole from "./pages/AdminConsole.jsx";
-import Support from "./pages/Support.jsx";
+import Settings from "./pages/settings.jsx";
+import AdminConsole from "./pages/Adminconsole.jsx";
+import Support from "./pages/support.jsx";
 
 // Helper: role checks
 function hasLeaderRole(role) {
