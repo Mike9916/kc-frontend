@@ -1,5 +1,5 @@
 // src/pages/Leaders.jsx
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import {
   me,
   getLeaderSummary,
@@ -8,100 +8,158 @@ import {
   leaderVerify,
   leaderReturn,
   downloadLeaderExport,
-} from '../api';
-import Modal from '../components/Modal.jsx';
-import LeaderSummary from './LeaderSummary.jsx'; // ⬅️ NEW
+} from "../api";
+import Modal from "../components/Modal.jsx";
+import LeaderSummary from "./LeaderSummary.jsx";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
 export default function Leaders() {
   const [auth, setAuth] = useState(null);
   const [date, setDate] = useState(today());
-  const [type, setType] = useState('service');
+  const [type, setType] = useState("service");
   const [data, setData] = useState(null);
   const [busy, setBusy] = useState(false);
-  const [err, setErr] = useState('');
-  const [view, setView] = useState('reports'); // ⬅️ NEW: 'reports' | 'summary'
+  const [err, setErr] = useState("");
+  const [view, setView] = useState("reports"); // 'reports' | 'summary'
 
   useEffect(() => {
     (async () => {
-      try { setAuth(await me()); } catch { setAuth(null); }
+      try {
+        setAuth(await me());
+      } catch {
+        setAuth(null);
+      }
     })();
   }, []);
 
   async function load() {
-    setBusy(true); setErr('');
-    try { setData(await getLeaderSummary(date, type)); }
-    catch (e) { setErr(e.message || 'Load failed'); }
-    finally { setBusy(false); }
+    setBusy(true);
+    setErr("");
+    try {
+      setData(await getLeaderSummary(date, type));
+    } catch (e) {
+      setErr(e.message || "Load failed");
+    } finally {
+      setBusy(false);
+    }
   }
 
-  useEffect(() => { load(); /* initial */ }, []); // eslint-disable-line
+  useEffect(() => {
+    load();
+    // eslint-disable-next-line
+  }, []);
 
-  const role = (auth?.role || '').toUpperCase();
-  const isLeader = ['GYJN','JYJN','WEJANM','NEMOBU','CHMN','DNGSN','ADMIN'].includes(role);
-  const canFill = role === 'GYJN';
-if (auth && !isLeader) {
+  const role = (auth?.role || "").toUpperCase();
+  const isLeader = ["GYJN", "JYJN", "WEJANM", "NEMOBU", "CHMN", "DNGSN", "ADMIN"].includes(
+    role
+  );
+  const canFill = role === "GYJN";
+
+  if (auth && !isLeader) {
+    return (
+      <div className="leaders-page" style={{ padding: 8 }}>
+        <h2 style={{ marginTop: 0 }}>Leaders</h2>
+        <Banner>Restricted to leaders only.</Banner>
+      </div>
+    );
+  }
+
   return (
     <div className="leaders-page" style={{ padding: 8 }}>
       <h2 style={{ marginTop: 0 }}>Leaders</h2>
-      <Banner>Restricted to leaders only.</Banner>
-    </div>
-  );
-}
 
-return (
-  <div className="leaders-page" style={{ padding: 8 }}>
-    <h2 style={{ marginTop: 0 }}>Leaders</h2>
-
-      {/* ⬇️ NEW: simple tab switcher */}
+      {/* tab switcher */}
       {auth && (
-        <div style={{ display:'flex', gap:8, marginBottom:10 }}>
+        <div style={{ display: "flex", gap: 8, marginBottom: 8 }}>
           <button
-            onClick={() => setView('reports')}
-            style={{ padding:'6px 10px', borderRadius:8, border:'1px solid #e5e7eb',
-                     background: view==='reports' ? '#111827' : '#fff',
-                     color: view==='reports' ? '#fff' : '#111827' }}>
+            onClick={() => setView("reports")}
+            style={{
+              padding: "4px 8px",
+              borderRadius: 8,
+              border: "1px solid #e5e7eb",
+              background: view === "reports" ? "#111827" : "#fff",
+              color: view === "reports" ? "#fff" : "#111827",
+              fontSize: 12,
+            }}
+          >
             Reports
           </button>
           <button
-            onClick={() => setView('summary')}
-            style={{ padding:'6px 10px', borderRadius:8, border:'1px solid #e5e7eb',
-                     background: view==='summary' ? '#111827' : '#fff',
-                     color: view==='summary' ? '#fff' : '#111827' }}>
+            onClick={() => setView("summary")}
+            style={{
+              padding: "4px 8px",
+              borderRadius: 8,
+              border: "1px solid #e5e7eb",
+              background: view === "summary" ? "#111827" : "#fff",
+              color: view === "summary" ? "#fff" : "#111827",
+              fontSize: 12,
+            }}
+          >
             Summary
           </button>
         </div>
       )}
 
-      {auth && view==='reports' && (
+      {auth && view === "reports" && (
         <Header
           auth={auth}
           data={data}
-          date={date} setDate={setDate}
-          type={type} setType={setType}
+          date={date}
+          setDate={setDate}
+          type={type}
+          setType={setType}
           onLoad={load}
-          onExport={(fmt)=>downloadLeaderExport(fmt,{date,type})}
-          onForward={()=>forwardSummary({auth, date, type, data, setErr, onAfter:load})}
-          onVerify={()=>verifySummary({date, type, setErr, onAfter:load})}
-          onReturn={()=>returnSummary({date, type, setErr, onAfter:load})}
+          onExport={(fmt) => downloadLeaderExport(fmt, { date, type })}
+          onForward={() =>
+            forwardSummary({ auth, date, type, data, setErr, onAfter: load })
+          }
+          onVerify={() => verifySummary({ date, type, setErr, onAfter: load })}
+          onReturn={() => returnSummary({ date, type, setErr, onAfter: load })}
         />
       )}
 
-      {view==='reports' && err && <Banner>{err}</Banner>}
-      {view==='reports' && busy && <Banner ok>Loading…</Banner>}
+      {view === "reports" && err && <Banner>{err}</Banner>}
+      {view === "reports" && busy && <Banner ok>Loading…</Banner>}
 
-      {view==='reports' && data && <SummaryStrip data={data} type={type} />}
-      {view==='reports' && data && <Table type={type} rows={data.rows||[]} canFill={canFill} date={date} onFilled={load} />}
+      {view === "reports" && data && <SummaryStrip data={data} type={type} />}
+      {view === "reports" && data && (
+        <Table
+          type={type}
+          rows={data.rows || []}
+          canFill={canFill}
+          date={date}
+          onFilled={load}
+        />
+      )}
 
-      {/* ⬇️ NEW: Summary view */}
-      {view==='summary' && (
-        <div style={{ marginTop: 8 }}>
-          {/* Reuse the same date/type pickers so results match exactly */}
-          <div style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginBottom: 8 }}>
-            <label>Date: <input type="date" value={date} onChange={e=>setDate(e.target.value)} /></label>
-            <label>Type:{' '}
-              <select value={type} onChange={e=>setType(e.target.value)}>
+      {/* Summary view */}
+      {view === "summary" && (
+        <div style={{ marginTop: 6 }}>
+          <div
+            style={{
+              display: "flex",
+              gap: 8,
+              alignItems: "center",
+              flexWrap: "wrap",
+              marginBottom: 6,
+              fontSize: 12,
+            }}
+          >
+            <label>
+              Date:{" "}
+              <input
+                type="date"
+                value={date}
+                onChange={(e) => setDate(e.target.value)}
+              />
+            </label>
+            <label>
+              Type:{" "}
+              <select
+                value={type}
+                onChange={(e) => setType(e.target.value)}
+              >
                 <option value="service">Service</option>
                 <option value="education">Education</option>
                 <option value="evangelism">Evangelism</option>
@@ -109,19 +167,24 @@ return (
               </select>
             </label>
             <button onClick={load}>Load</button>
-            <div style={{ marginLeft:'auto', display:'flex', gap:8 }}>
-              <button onClick={()=>downloadLeaderExport('xlsx',{date,type})}>Export Excel</button>
-              <button onClick={()=>downloadLeaderExport('csv',{date,type})}>Export CSV</button>
+            <div style={{ marginLeft: "auto", display: "flex", gap: 6 }}>
+              <button onClick={() => downloadLeaderExport("xlsx", { date, type })}>
+                Export Excel
+              </button>
+              <button onClick={() => downloadLeaderExport("csv", { date, type })}>
+                Export CSV
+              </button>
             </div>
           </div>
 
-          {/* Summary component renders the grouped tables/KPIs */}
           <LeaderSummary date={date} type={type} />
         </div>
       )}
     </div>
   );
 }
+
+/* ----- keep the rest of your file (Header, Banner, SummaryStrip, Table, Row, etc.) exactly as you have it now, just make sure Table uses className="leaders-table" like you already did. ----- */
 
 /* ===== (everything below here is your original file, unchanged) ===== */
 
