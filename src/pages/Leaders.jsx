@@ -10,6 +10,7 @@ import {
   downloadLeaderExport,
 } from '../api';
 import Modal from '../components/Modal.jsx';
+import LeaderSummary from './LeaderSummary.jsx'; // ⬅️ NEW
 
 const today = () => new Date().toISOString().slice(0, 10);
 
@@ -20,6 +21,7 @@ export default function Leaders() {
   const [data, setData] = useState(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState('');
+  const [view, setView] = useState('reports'); // ⬅️ NEW: 'reports' | 'summary'
 
   useEffect(() => {
     (async () => {
@@ -53,7 +55,27 @@ export default function Leaders() {
     <div style={{ padding:16 }}>
       <h2 style={{ marginTop:0 }}>Leaders</h2>
 
+      {/* ⬇️ NEW: simple tab switcher */}
       {auth && (
+        <div style={{ display:'flex', gap:8, marginBottom:10 }}>
+          <button
+            onClick={() => setView('reports')}
+            style={{ padding:'6px 10px', borderRadius:8, border:'1px solid #e5e7eb',
+                     background: view==='reports' ? '#111827' : '#fff',
+                     color: view==='reports' ? '#fff' : '#111827' }}>
+            Reports
+          </button>
+          <button
+            onClick={() => setView('summary')}
+            style={{ padding:'6px 10px', borderRadius:8, border:'1px solid #e5e7eb',
+                     background: view==='summary' ? '#111827' : '#fff',
+                     color: view==='summary' ? '#fff' : '#111827' }}>
+            Summary
+          </button>
+        </div>
+      )}
+
+      {auth && view==='reports' && (
         <Header
           auth={auth}
           data={data}
@@ -67,15 +89,42 @@ export default function Leaders() {
         />
       )}
 
-      {err && <Banner>{err}</Banner>}
-      {busy && <Banner ok>Loading…</Banner>}
+      {view==='reports' && err && <Banner>{err}</Banner>}
+      {view==='reports' && busy && <Banner ok>Loading…</Banner>}
 
-      {data && <SummaryStrip data={data} type={type} />}
+      {view==='reports' && data && <SummaryStrip data={data} type={type} />}
+      {view==='reports' && data && <Table type={type} rows={data.rows||[]} canFill={canFill} date={date} onFilled={load} />}
 
-      {data && <Table type={type} rows={data.rows||[]} canFill={canFill} date={date} onFilled={load} />}
+      {/* ⬇️ NEW: Summary view */}
+      {view==='summary' && (
+        <div style={{ marginTop: 8 }}>
+          {/* Reuse the same date/type pickers so results match exactly */}
+          <div style={{ display:'flex', gap:12, alignItems:'center', flexWrap:'wrap', marginBottom: 8 }}>
+            <label>Date: <input type="date" value={date} onChange={e=>setDate(e.target.value)} /></label>
+            <label>Type:{' '}
+              <select value={type} onChange={e=>setType(e.target.value)}>
+                <option value="service">Service</option>
+                <option value="education">Education</option>
+                <option value="evangelism">Evangelism</option>
+                <option value="offering">Offering</option>
+              </select>
+            </label>
+            <button onClick={load}>Load</button>
+            <div style={{ marginLeft:'auto', display:'flex', gap:8 }}>
+              <button onClick={()=>downloadLeaderExport('xlsx',{date,type})}>Export Excel</button>
+              <button onClick={()=>downloadLeaderExport('csv',{date,type})}>Export CSV</button>
+            </div>
+          </div>
+
+          {/* Summary component renders the grouped tables/KPIs */}
+          <LeaderSummary date={date} type={type} />
+        </div>
+      )}
     </div>
   );
 }
+
+/* ===== (everything below here is your original file, unchanged) ===== */
 
 function Header({ auth, data, date, setDate, type, setType, onLoad, onExport, onForward, onVerify, onReturn }){
   const wf = data?.workflow || {};
@@ -410,7 +459,6 @@ function FillModal({ type, member, date, onClose, onSaved, mode = 'create', init
   const [off_channel, setOffChannel] = useState('cash');
   const [off_amount, setOffAmount] = useState(0);
   const offInvalid = !off_not && Number(off_amount) < 5; // Offered must be ≥ 5
-
 
 useEffect(() => {
   if (!initial) return;

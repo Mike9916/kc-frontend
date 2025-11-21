@@ -1,5 +1,0 @@
-package com.topsecretcommunist.app;
-
-import com.getcapacitor.BridgeActivity;
-
-public class MainActivity extends BridgeActivity {}

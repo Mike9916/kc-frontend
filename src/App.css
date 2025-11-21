@@ -40,3 +40,86 @@
 .read-the-docs {
   color: #888;
 }
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+/* root wrapper for the app */
+.app-root {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+/* main scrollable content */
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.75rem;
+}
+
+/* top bar (optional) */
+.top-bar {
+  padding: 0.5rem 0.75rem;
+}
+
+/* bottom nav bar */
+.bottom-nav {
+  position: fixed;      /* always at bottom */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  border-top: 1px solid #e2e2e2;
+  padding: 0.35rem 0.5rem;
+  display: flex;
+  justify-content: space-around;
+  gap: 0.5rem;
+  z-index: 50;
+}
+
+/* make sure content isn't hidden behind fixed nav */
+.page-content {
+  padding-bottom: 3rem;   /* ~ nav height */
+}
+
+/* bottom nav buttons/links */
+.bottom-nav a,
+.bottom-nav button {
+  font-size: 0.8rem;
+  padding: 0.3rem 0.5rem;
+  border: none;
+  background: none;
+}
+/* General mobile tweaks */
+@media (max-width: 768px) {
+  .leaders-page {
+    max-width: 100%;
+    padding: 0.5rem;
+    margin: 0;
+  }
+
+  /* Tables – smaller font and tighter rows on mobile */
+  .leaders-table {
+    width: 100%;
+    font-size: 0.8rem;
+    border-collapse: collapse;
+  }
+
+  .leaders-table th,
+  .leaders-table td {
+    padding: 0.25rem 0.3rem;
+  }
+
+  /* Stats/info strip under the heading */
+  .leaders-header,
+  .leaders-stats {
+    margin-bottom: 0.4rem;
+  }
+}
