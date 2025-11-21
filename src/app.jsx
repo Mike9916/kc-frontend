@@ -41,9 +41,9 @@ export default function App() {
   }, [profile]);
 
   return (
-    <div className="app-root" style={appShell}>
+    <div className="app-root">
       {/* Top bar */}
-      <header className="top-bar" style={topbar}>
+      <header className="top-bar">
         <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
           <span style={{ fontSize: 18, fontWeight: 700 }}>KC</span>
           <span style={{ color: "#6b7280" }}>{t("app.title")}</span>
@@ -70,7 +70,7 @@ export default function App() {
       </header>
 
       {/* Content router */}
-      <main className="page-content" style={content}>
+      <main className="page-content">
         {screen === "welcome" && <Welcome go={(s) => setScreen(s)} />}
 
         {screen === "auth" && <Auth onDone={() => setScreen("home")} />}
@@ -101,12 +101,13 @@ export default function App() {
       </main>
 
       {/* Bottom nav */}
-      <nav className="bottom-nav" style={tabs}>
+      <nav className="bottom-nav">
         <Tab
           label={t("app.welcome")}
           active={screen === "welcome"}
           onClick={() => setScreen("welcome")}
         />
+
         {!isLoggedIn() && (
           <Tab
             label={t("app.auth")}
@@ -114,6 +115,7 @@ export default function App() {
             onClick={() => setScreen("auth")}
           />
         )}
+
         {isLoggedIn() && (
           <>
             <Tab
@@ -177,7 +179,7 @@ export default function App() {
   );
 }
 
-// ------------- tiny components & styles -------------
+/* ---------- tiny components & styles ---------- */
 
 function Restricted({ label }) {
   return (
@@ -214,38 +216,6 @@ function Tab({ label, active, onClick }) {
   );
 }
 
-// Layout styles (mobile-friendly grid: top bar, content, bottom nav)
-const appShell = {
-  display: "grid",
-  gridTemplateRows: "56px 1fr 56px",
-  height: "100dvh",
-  background: "#f9fafb",
-};
-
-const topbar = {
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "space-between",
-  padding: "0 12px",
-  borderBottom: "1px solid #e5e7eb",
-  background: "#fff",
-};
-
-const content = {
-  padding: 12,
-  overflow: "auto",
-};
-
-const tabs = {
-  display: "flex",
-  gap: 6,
-  padding: "6px 8px",
-  borderTop: "1px solid #e5e7eb",
-  background: "#fff",
-  position: "sticky",
-  bottom: 0,
-};
-
 const btnGhost = {
   background: "transparent",
   border: "1px solid #e5e7eb",
@@ -254,7 +224,7 @@ const btnGhost = {
   cursor: "pointer",
 };
 
-// ------------- hash-based screen (no external router) -------------
+/* ---------- hash-based screen (no external router) ---------- */
 
 function useHashScreen() {
   const [screen, setScreenState] = useState(initialScreen());
