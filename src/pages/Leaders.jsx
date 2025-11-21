@@ -41,19 +41,18 @@ export default function Leaders() {
   const role = (auth?.role || '').toUpperCase();
   const isLeader = ['GYJN','JYJN','WEJANM','NEMOBU','CHMN','DNGSN','ADMIN'].includes(role);
   const canFill = role === 'GYJN';
-
-  if (auth && !isLeader) {
-    return (
-      <div style={{ padding: 16 }}>
-        <h2 style={{ marginTop: 0 }}>Leaders</h2>
-        <Banner>Restricted to leaders only.</Banner>
-      </div>
-    );
-  }
-
+if (auth && !isLeader) {
   return (
-    <div style={{ padding:16 }}>
-      <h2 style={{ marginTop:0 }}>Leaders</h2>
+    <div className="leaders-page" style={{ padding: 8 }}>
+      <h2 style={{ marginTop: 0 }}>Leaders</h2>
+      <Banner>Restricted to leaders only.</Banner>
+    </div>
+  );
+}
+
+return (
+  <div className="leaders-page" style={{ padding: 8 }}>
+    <h2 style={{ marginTop: 0 }}>Leaders</h2>
 
       {/* ⬇️ NEW: simple tab switcher */}
       {auth && (
@@ -310,11 +309,15 @@ function Kpi({ title, value }){ return (
 
 function Table({ type, rows, canFill, date, onFilled }){
   return (
-    <div style={{ border:'1px solid #eee', borderRadius:12, overflow:'hidden' }}>
-      <table style={{ width:'100%', borderCollapse:'collapse' }}>
-        <thead style={{ background:'#fafafa' }}>
+    <div style={{ border: "1px solid #eee", borderRadius: 12, overflow: "hidden" }}>
+      <table
+        className="leaders-table"
+        style={{ width: "100%", borderCollapse: "collapse" }}
+      >
+        <thead style={{ background: "#fafafa" }}>
           <tr>
             <Th>Name / Group</Th>
+
             <Th>Status</Th>
             {(type==='service' || type==='education') && <>
               <Th>Physical</Th><Th>Online</Th><Th>Other</Th><Th>Not Attended</Th>

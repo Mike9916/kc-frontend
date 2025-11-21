@@ -1,123 +1,96 @@
+/* Reset root layout: allow full-width mobile rendering */
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
-}
+/* Allow page to take full height */
 html, body {
   height: 100%;
   margin: 0;
+  padding: 0;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  background: #f9fafb;
 }
 
-/* root wrapper for the app */
+/* Root wrapper for React app */
 .app-root {
   flex: 1;
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
-/* main scrollable content */
+/* Main scrollable content */
 .page-content {
   flex: 1;
   overflow-y: auto;
   padding: 0.75rem;
+  padding-bottom: 3.5rem; /* space for bottom nav */
 }
 
-/* top bar (optional) */
+/* Fixed top bar */
 .top-bar {
-  padding: 0.5rem 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-bottom: 1px solid #e5e7eb;
+  background: #fff;
+  z-index: 20;
 }
 
-/* bottom nav bar */
+/* Fixed bottom navigation bar */
 .bottom-nav {
-  position: fixed;      /* always at bottom */
+  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
   background: #ffffff;
   border-top: 1px solid #e2e2e2;
-  padding: 0.35rem 0.5rem;
+  padding: 0.45rem 0.5rem;
   display: flex;
   justify-content: space-around;
-  gap: 0.5rem;
+  gap: 0.4rem;
   z-index: 50;
 }
 
-/* make sure content isn't hidden behind fixed nav */
-.page-content {
-  padding-bottom: 3rem;   /* ~ nav height */
+.bottom-nav button,
+.bottom-nav a {
+  font-size: 0.8rem;
+  padding: 0.35rem 0.6rem;
+  border-radius: 10px;
 }
 
-/* bottom nav buttons/links */
-.bottom-nav a,
-.bottom-nav button {
-  font-size: 0.8rem;
-  padding: 0.3rem 0.5rem;
-  border: none;
-  background: none;
-}
-/* General mobile tweaks */
+/* Mobile-specific improvements */
 @media (max-width: 768px) {
-  .leaders-page {
+  /* Full width pages */
+  .leaders-page,
+  .reports-page,
+  .home-page,
+  .media-page,
+  .settings-page {
     max-width: 100%;
-    padding: 0.5rem;
     margin: 0;
+    padding: 0.5rem;
   }
 
-  /* Tables – smaller font and tighter rows on mobile */
+  /* Tables */
   .leaders-table {
     width: 100%;
-    font-size: 0.8rem;
+    font-size: 0.82rem;
     border-collapse: collapse;
   }
 
   .leaders-table th,
   .leaders-table td {
-    padding: 0.25rem 0.3rem;
+    padding: 0.35rem 0.3rem;
   }
 
-  /* Stats/info strip under the heading */
+  /* KPI and summary spacing */
   .leaders-header,
   .leaders-stats {
     margin-bottom: 0.4rem;
