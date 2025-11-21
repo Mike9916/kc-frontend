@@ -100,7 +100,7 @@ export default function App() {
           ))}
       </main>
 
-      {/* Bottom nav */}
+      {/* Bottom nav – fixed at the bottom via CSS */}
       <nav className="bottom-nav">
         <Tab
           label={t("app.welcome")}
@@ -179,13 +179,13 @@ export default function App() {
   );
 }
 
-/* ---------- tiny components & styles ---------- */
+// ------------- tiny components & styles -------------
 
 function Restricted({ label }) {
   return (
     <div
       style={{
-        padding: 24,
+        padding: 16,
         textAlign: "center",
         color: "#7f1d1d",
         background: "#fef2f2",
@@ -203,12 +203,14 @@ function Tab({ label, active, onClick }) {
     <button
       onClick={onClick}
       style={{
-        padding: "8px 10px",
+        padding: "6px 8px",
         border: "1px solid #e5e7eb",
-        borderRadius: 10,
+        borderRadius: 999,
         background: active ? "#111827" : "#fff",
         color: active ? "#fff" : "#111827",
         cursor: "pointer",
+        fontSize: 12,
+        whiteSpace: "nowrap",
       }}
     >
       {label}
@@ -220,11 +222,12 @@ const btnGhost = {
   background: "transparent",
   border: "1px solid #e5e7eb",
   borderRadius: 10,
-  padding: "6px 10px",
+  padding: "4px 8px",
   cursor: "pointer",
+  fontSize: 12,
 };
 
-/* ---------- hash-based screen (no external router) ---------- */
+// ------------- hash-based screen (no external router) -------------
 
 function useHashScreen() {
   const [screen, setScreenState] = useState(initialScreen());
