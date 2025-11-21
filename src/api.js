@@ -4,7 +4,7 @@ export const API_BASE =
     import.meta.env &&
     // support either VITE_API_BASE or VITE_API_BASE_URL
     (import.meta.env.VITE_API_BASE || import.meta.env.VITE_API_BASE_URL)) ||
-  "https://kc-backend-1.onrender.com";   // 👈 Your Render backend base URL
+  "https://kc-backend-2-oft2.onrender.com";   // new: your current backend 
 
 console.log("API_BASE in this build =", API_BASE);
 
