@@ -12,7 +12,19 @@ import {
 import Modal from "../components/Modal.jsx";
 import LeaderSummary from "./LeaderSummary.jsx";
 
-const today = () => new Date().toISOString().slice(0, 10);
+const today = () => {
+  const now = new Date();
+  // Convert to Africa/Nairobi time
+  const kenya = new Date(
+    now.toLocaleString("en-US", { timeZone: "Africa/Nairobi" })
+  );
+
+  const y = kenya.getFullYear();
+  const m = String(kenya.getMonth() + 1).padStart(2, "0");
+  const d = String(kenya.getDate()).padStart(2, "0");
+
+  return `${y}-${m}-${d}`;
+};
 
 // Zoom boundaries for Leaders page
 const ZOOM_MIN = 0.3;
