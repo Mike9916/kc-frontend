@@ -14,6 +14,11 @@ import LeaderSummary from "./LeaderSummary.jsx";
 
 const today = () => new Date().toISOString().slice(0, 10);
 
+// Zoom boundaries for Leaders page
+const ZOOM_MIN = 0.7;
+const ZOOM_MAX = 1.2;
+const ZOOM_STEP = 0.05;
+
 export default function Leaders() {
   const [auth, setAuth] = useState(null);
   const [date, setDate] = useState(today());
@@ -23,6 +28,26 @@ export default function Leaders() {
   const [err, setErr] = useState("");
   const [view, setView] = useState("reports"); // 'reports' | 'summary'
 
+  // user-controlled zoom for this page
+  const [zoom, setZoom] = useState(() => {
+    try {
+      const raw = localStorage.getItem("leaders_zoom");
+      const z = raw ? Number(raw) : NaN;
+      if (!Number.isFinite(z)) return 0.9;
+      return Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, z));
+    } catch {
+      return 0.9;
+    }
+  });
+
+  // keep zoom in localStorage
+  useEffect(() => {
+    try {
+      localStorage.setItem("leaders_zoom", String(zoom));
+    } catch {}
+  }, [zoom]);
+
+  // load auth profile
   useEffect(() => {
     (async () => {
       try {
@@ -47,27 +72,72 @@ export default function Leaders() {
 
   useEffect(() => {
     load();
-    // eslint-disable-next-line
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const role = (auth?.role || "").toUpperCase();
-  const isLeader = ["GYJN", "JYJN", "WEJANM", "NEMOBU", "CHMN", "DNGSN", "ADMIN"].includes(
-    role
-  );
+  const isLeader = ["GYJN", "JYJN", "WEJANM", "NEMOBU", "CHMN", "DNGSN", "ADMIN"].includes(role);
   const canFill = role === "GYJN";
 
+  // shared wrapper style using current zoom
+  const wrapperStyle = {
+    padding: 8,
+    transform: `scale(${zoom})`,
+    transformOrigin: "top left",
+    width: `${100 / zoom}%`,
+  };
+
+  // Not a leader → restricted view
   if (auth && !isLeader) {
     return (
-      <div className="leaders-page" style={{ padding: 8 }}>
+      <div className="leaders-page" style={wrapperStyle}>
         <h2 style={{ marginTop: 0 }}>Leaders</h2>
         <Banner>Restricted to leaders only.</Banner>
       </div>
     );
   }
 
+  // Normal leaders page
   return (
-    <div className="leaders-page" style={{ padding: 8 }}>
+    <div className="leaders-page" style={wrapperStyle}>
       <h2 style={{ marginTop: 0 }}>Leaders</h2>
+
+      {/* zoom controls */}
+      <div
+        style={{
+          display: "flex",
+          gap: 8,
+          alignItems: "center",
+          marginBottom: 6,
+          fontSize: 12,
+          flexWrap: "wrap",
+        }}
+      >
+        <span>Zoom:</span>
+        <button
+          onClick={() =>
+            setZoom((z) => Math.max(ZOOM_MIN, +(z - ZOOM_STEP).toFixed(2)))
+          }
+          style={{ padding: "2px 6px", borderRadius: 6, fontSize: 12 }}
+        >
+          A−
+        </button>
+        <span>{Math.round(zoom * 100)}%</span>
+        <button
+          onClick={() =>
+            setZoom((z) => Math.min(ZOOM_MAX, +(z + ZOOM_STEP).toFixed(2)))
+          }
+          style={{ padding: "2px 6px", borderRadius: 6, fontSize: 12 }}
+        >
+          A+
+        </button>
+        <button
+          onClick={() => setZoom(0.9)}
+          style={{ padding: "2px 6px", borderRadius: 6, fontSize: 12 }}
+        >
+          Reset
+        </button>
+      </div>
 
       {/* tab switcher */}
       {auth && (
@@ -183,7 +253,6 @@ export default function Leaders() {
     </div>
   );
 }
-
 /* ----- keep the rest of your file (Header, Banner, SummaryStrip, Table, Row, etc.) exactly as you have it now, just make sure Table uses className="leaders-table" like you already did. ----- */
 
 /* ===== (everything below here is your original file, unchanged) ===== */
