@@ -15,7 +15,7 @@ import LeaderSummary from "./LeaderSummary.jsx";
 const today = () => new Date().toISOString().slice(0, 10);
 
 // Zoom boundaries for Leaders page
-const ZOOM_MIN = 0.7;
+const ZOOM_MIN = 0.3;
 const ZOOM_MAX = 1.2;
 const ZOOM_STEP = 0.05;
 
